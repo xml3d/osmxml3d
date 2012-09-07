@@ -1,0 +1,20 @@
+.CameraGizmos {
+	width: 50px; 
+	height: 50px; 
+	background-repeat:no-repeat; 
+	background-position:center center;
+	margin: 10px;
+}
+
+.CameraGizmos.orbit	{
+	background-image: url(images/Orbit.png); 
+}
+.CameraGizmos.pan	{
+	background-image: url(images/Pan.png); 
+}
+.CameraGizmos.zoom	{
+	background-image: url(images/Zoom.png); 
+}
+.CameraGizmos.center	{
+	background-image: url(images/Fit.png); 
+}

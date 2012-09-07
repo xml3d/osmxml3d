@@ -1,0 +1,97 @@
+@CHARSET "UTF-8";
+
+.toolbar { padding: 10px 4px; }
+button {
+	margin: 2px; 
+	padding: 4px 0; 
+	cursor: pointer; 
+}
+button, ul#icons {margin: 0; padding: 0;}
+ul#icons li {
+	margin: 2px; 
+	position: relative; 
+	padding: 4px 0; 
+	cursor: pointer; 
+	float: left;  
+	list-style: none;
+}
+button span.ui-icon, ul#icons span.ui-icon { margin: 0 4px; cursor: pointer;}
+
+.slider {
+	width: 300px;
+	float:right;
+	margin-bottom: 15px;
+}		
+.slider_r .ui-slider-range { background: #FF0000; }
+.slider_r .ui-slider-handle { border-color: #FF0000; }
+.slider_g .ui-slider-range { background: #00FF00; }
+.slider_g .ui-slider-handle { border-color: #00FF00; }
+.slider_b .ui-slider-range { background: #0000FF; }
+.slider_b .ui-slider-handle { border-color: #0000FF; }
+
+.slider_c .ui-slider-range { background: #00FFFF; }
+.slider_c .ui-slider-handle { border-color: #00FFFF; }
+.slider_m .ui-slider-range { background: #FF00FF; }
+.slider_m .ui-slider-handle { border-color: #FF00FF; }
+.slider_y .ui-slider-range { background: #FFFF00; }
+.slider_y .ui-slider-handle { border-color: #FFFF00; }
+.slider_k .ui-slider-range { background: #000000; }
+.slider_k .ui-slider-handle { border-color: #000000; }	
+
+.slider_single .ui-slider-range { background: #E69A00; }
+.slider_single .ui-slider-handle { border-color: #E69A00; }	
+
+.labels {float:left;clear:both;}
+.labels_r {margin-left:20px;}
+
+.thumb {
+	height: 60px;
+	border: 1px solid #000;
+}
+
+#drop_zone {
+  border: 2px dashed #bbb;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom:4px;
+  text-align: center;
+  /*font: 20pt bold 'Vollkorn';*/
+  color: #bbb;
+}		
+
+body {
+	background-color: #222222;
+	font-family:Verdana,sans-serif;
+	color:#666666;
+	font-size: 11px;
+	line-height: 16px;
+}
+
+body, div, li, ul, a, img, p, input, hr, h3, h4, table, tr, td, tbody, iframe {
+	margin:0px;
+	padding:0px;
+	border:0px none;
+}
+
+p {
+	color:#EEEEEE;
+	font-weight: bold;
+}
+
+h2 {
+	font-size:14px;
+	text-align:left;
+	font-weight:bold;
+	margin-left: 10px;
+	margin-right: 10px;
+	border-bottom: 1px solid #fff;
+	color:#fff;
+}
+
+div#win3d {
+	width:900px;
+	height:600px;
+	padding:10px 0px 0px 10px;
+}

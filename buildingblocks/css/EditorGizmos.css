@@ -1,0 +1,21 @@
+.EditorGizmos {
+	width: 50px; 
+	height: 50px; 
+	background-repeat:no-repeat; 
+	background-position:center center;
+	margin: 10px;
+}
+
+.EditorGizmos.select	{
+	background-image: url(images/Select.png); 
+}
+.EditorGizmos.translate	{
+	background-image: url(images/Translate.png); 
+}
+.EditorGizmos.rotate	{
+	background-image: url(images/Rotate.png); 
+}
+.EditorGizmos.scale	{
+	background-image: url(images/Scale.png); 
+}
+

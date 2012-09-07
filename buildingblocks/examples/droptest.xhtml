@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:webgl="http://www.xml3d.org/2009/xml3d/webgl">
+<head>
+<title>Simple Example</title>
+	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
+	<style type="text/css">
+	    .description {
+    		width:596px; 
+    	}
+	</style>
+	<script type="text/javascript" src="../js/xml3d-4.1-beta.js"></script>
+	<script type="text/javascript" src="../js/jquery-1.7.1.js"></script>
+	<script type="text/javascript" src="../js/TextureDrop.js"></script>
+	<script type="text/javascript" src="../js/CameraGizmos.js" />
+	<script type="text/javascript" src="../js/EditorGizmos.js" />
+	<script type="text/javascript">
+		<![CDATA[
+			function init() {
+				TextureDrop.init("upload.php");
+				CameraGizmos.init();
+				//EditorGizmos.init();
+			}		
+		]]>
+	</script>
+	<link type="text/css" href="../css/xml3d.css" rel="stylesheet" />
+	<link type="text/css" href="../css/CameraGizmos.css" rel="stylesheet" />
+	<link type="text/css" href="../css/EditorGizmos.css" rel="stylesheet" />
+</head>
+<body onload="init()">
+	<h1>Drop Textures on the objects!</h1>
+	...either from the web or from disk<br/>
+	You can also drop XML3D shader statements as displayed in the textbox by ShaderEditor.xhtml (at least in the native chromium)
+	<div class="content">
+	  <table style="background-color: #ddd;" >
+      <tr>
+	  <!--
+        <th><div class="EditorGizmos select"></div></th>
+        <th><div class="EditorGizmos translate"></div></th>
+        <th><div class="EditorGizmos rotate"></div></th>
+        <th><div class="EditorGizmos scale"></div></th>
+		-->
+        <th><div class="CameraGizmos orbit"></div></th>
+        <th><div class="CameraGizmos pan"></div></th>
+        <th><div class="CameraGizmos zoom"></div></th>
+        <th><div class="CameraGizmos center"></div></th>
+      </tr>
+    </table>
+		<xml3d id="scene" renderer="opengl" xmlns="http://www.xml3d.org/2009/xml3d" style="width: 600px; height: 400px; background-color: black;" activeView="#defaultView">
+		<navigation mode="none" />
+			<defs>
+				<transform id="boxTransform1" translation="0 -3 3" rotation="1 0 0 0"/>
+				<transform id="boxTransform2" translation="4 0.01 0" />
+				<transform id="lightTransform" translation="-2 5 10" />
+				
+				<shader id="ixShader" script="urn:xml3d:shader:phong">
+					<float3 name="diffuseColor">1.0 0.9 0.8</float3>
+					<float name="ambientIntensity">0.2</float>
+
+					<texture name="diffuseTexture">
+							<img src="textures/chromium.png"/>
+					</texture>
+				</shader>
+				
+				<shader id="groundShader" script="urn:xml3d:shader:phong">
+					<float3 name="diffuseColor">0.4 0.4 0.4</float3>
+					<float name="ambientIntensity">0.4</float>
+				</shader>
+
+				<lightshader id="lightShader" script="urn:xml3d:lightshader:point">
+					<float3 name="intensity">1.0 1.0 .8</float3>
+					<float3 name="attenuation">1.0 0.01 0.0</float3>
+				</lightshader>
+				
+				<data id="box" >
+					<int name="index">0 1 2 2 3 0 4 7 5 5 7 6 8 9 10 10 11 8 12 14 13 14 12 15 16 17 18 18 19 16 20 22 21 22 20 23</int>
+					<float3 name="position">-1.0 -1.0 -1.0 -1.0 1.0 -1.0 1.0 1.0 -1.0 1.0 -1.0 -1.0 -1.0 -1.0 1.0 -1.0 1.0 1.0 1.0 1.0 1.0 1.0 -1.0 1.0 -1.0 -1.0 -1.0 -1.0 -1.0 1.0 -1.0 1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 -1.0 1.0 -1.0 1.0 1.0 1.0 1.0 1.0 1.0 -1.0 -1.0 1.0 -1.0 -1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 1.0 1.0 -1.0 1.0 1.0 -1.0 -1.0</float3>
+					<float3 name="normal">0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0</float3>
+					<float2 name="texcoord">1.0 0.0 1.0 1.0 0.0 1.0 0.0 0.0 0.0 0.0 0.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 1.0 0.0 1.0 1.0 0.0 1.0 1.0 0.0 0.0 0.0 0.0 1.0 1.0 1.0 0.0 1.0 0.0 0.0 1.0 0.0 1.0 1.0 0.0 0.0 0.0 1.0 1.0 1.0 1.0 0.0</float2>
+				</data>
+				
+				<data id="ground" >
+					<int name="index">0 1 2 2 3 0</int>
+					<float3 name="position">-50.0 -4.0 50.0 50.0 -4.0 50.0 50.0 -4.0 -50.0 -50.0 -4.0 -50.0</float3>
+					<float3 name="normal">
+						0.0 1.0 0.0
+						0.0 1.0 0.0
+						0.0 1.0 0.0
+						0.0 1.0 0.0
+						</float3>
+					<float2 name="texcoord">
+						1.0 0.0 
+						1.0 1.0 
+						0.0 1.0 
+						0.0 0.0 
+					</float2>
+				</data>
+			</defs>
+
+			<view id="defaultView" position="-2 -1.5 -8" orientation="0 1 0 3.3"/>    
+
+			<group transform="#lightTransform">
+				<light shader="#lightShader"/>
+			</group>
+			<group id="group_box" transform="#boxTransform1" style="shader: url(#ixShader);" class="TextureDropDropable"> 
+				<mesh src="#box" type="triangles"/>
+			</group>    
+			<group id="group_box2" transform="#boxTransform2" style="shader: url(#ixShader);" class="TextureDropDropable EditorGizmosEditable"> 
+				<mesh src="#box" type="triangles"/>
+			</group>    
+			<group id="myground" shader="#groundShader" class="TextureDropDropable">
+				<mesh src="#ground" type="triangles"/>
+			</group>
+		</xml3d>
+	</div>
+</body>
+</html>

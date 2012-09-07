@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<!--
+	For the exact list of parameters, refer to the W3DS spec
+	http://www.w3ds.org/lib/exe/fetch.php?media=09-104r1_web_3d_service-0.4.0.pdf
+	and use the demo client:
+	http://rax.geog.uni-heidelberg.de/W3DS_OSM/demo.html
+	(especially the GetCapabilities)
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:webgl="http://www.xml3d.org/2009/xml3d/webgl">
+	<head><title>W3DS-TestClient</title>
+		<link type="text/css" href="../css/xml3d.css" rel="stylesheet" />
+		<script type="text/javascript" src="../js/xml3d-4.1-beta_ds.js"></script>
+		<script type="text/javascript" src="../js/camera-4.1-beta.js" />
+		<script type="text/javascript" src="../js/jquery-1.7.1.min.js"></script>	
+		<script type="text/javascript">
+		<![CDATA[
+		
+			function requestTile(lat_min,lon_min,lat_max,lon_max) {
+				var layers = "DEM,Buildings,StreetLabels,trees";
+				// hydrants,suburb_labels,county_labels,natural_labels,PublicFacilities,village_labels,Health,TechnicalFacilities,Enjoyment,Eating,lights,city_labels,lighthouses,Post,capital_labels,country_labels,windgenerators,Money,locality_labels,region_labels,Shop,Traffic,Education,StreetLabels,PublicTransport,trees,Accomodation,windmills,postboxes";
+				var offset = "778036.0,6315202.5,0";
+				// lat-lon syntax
+				$.post("../tools/W3DSAccess.php", {"lat_min": lat_min , "lon_min" : lon_min, "lat_max": lat_max, "lon_max": lon_max, "layers": layers, "offset": offset, "InEPSG" : "4326"}, function(data){
+				// maptile syntax
+				//$.post("../tools/W3DSAccess.php", {"x": "8511" , "y" : "5610", "z": "14", "offset_lat": "49.2333333", "layers": layers, "offset_lon": "7", "method": "getTile"}, function(data){
+					$("#main").append(data);
+				});
+			};
+			
+	    ]]>
+		</script>	
+	</head>
+	<body onload="requestTile(49.23,6.99,49.233,7.002);">
+		<div id="debug"></div>
+		<div id="win3d" style="z-index: 0;">		
+			<xml3d renderer="opengl" id="Xml3d" width="900px" height="600px" pickableBackground="true"  xmlns="http://www.xml3d.org/2009/xml3d" xmlns:xlink="http://www.w3.org/1999/xlink" activeView="#defaultView" >
+				<defs>		
+					<transform id="scaledown" rotation="0 1 0 0" scale="1 1 1" translation="0 0 -190" />
+					<transform id="scalerotate" rotation="1 0 0  1.57" scale="1 1 1" translation="0 0 -186" />
+					<transform id="rotate2" rotation="0 1 0  1.57" scale="1 1 1" translation="-190 0 -2550 " />	
+
+					<transform id="t_object_0_Licht1" translation="0 1000 0"/>
+					<lightshader id="ls_object_0_Licht1" script="urn:xml3d:lightshader:point">
+					  <bool name="castShadow">  true  </bool>
+					  <float3 name="attenuation">  1 0 0 </float3>
+					  <float3 name="intensity">  0.6 0.6 0.6 </float3>
+					 </lightshader>
+				</defs>
+
+				<navigation mode="walk" speed="50"/>
+				
+				<view id="defaultView" orientation="-0.9277783632278442 0.3685380220413208 0.058369990438222885 0.33816203474998474" position="907.87744140625 1018.4705200195312 3825.979248046875" fieldOfView="0.24"/>
+
+				<group id="group_object_0_Licht1" transform="#t_object_0_Licht1" visible="true">
+					<light id="light_object_0_Licht1" shader="#ls_object_0_Licht1" visible="true"/>
+				</group>
+						
+				<group id="main">
+				</group>
+				
+				<group transform="#scalerotate">
+					<group transform="#rotate2">
+					
+					<!-- smaf -->
+					
+					</group>
+				</group>
+			</xml3d>
+		</div>	
+	</body>
+</html>
